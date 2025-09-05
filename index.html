@@ -12,35 +12,15 @@
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;700&display=swap');
 
     :root {
-      /* Light Mode Colors */
-      --primary-color: #d40d12;
-      --secondary-color: #f0b62e;
-      --accent-color: #7d572e;
-      --background-light: #f8f2e2;
+      --primary-color: #d40d12; /* Deep Crimson */
+      --secondary-color: #f0b62e; /* Golden Yellow */
+      --accent-color: #7d572e; /* Earthy Brown */
+      --background-light: #f8f2e2; /* Muted Beige */
       --background-extra-light: #fff;
       --text-dark: #2d2d2d;
       --text-medium: #555555;
       --card-shadow: 0 12px 30px rgba(0,0,0,0.08);
       --border-color: rgba(125,87,46,0.15);
-      --note-bg: #fdf5e6;
-      --add-btn-bg: rgba(255, 255, 255, 0.5);
-      --progress-bg: #eee;
-    }
-
-    .dark-mode {
-      /* Dark Mode Colors */
-      --primary-color: #ff5555;
-      --secondary-color: #ffda73;
-      --accent-color: #a0815a;
-      --background-light: #2b2b2b;
-      --background-extra-light: #1c1c1c;
-      --text-dark: #f0f0f0;
-      --text-medium: #b0b0b0;
-      --card-shadow: 0 12px 30px rgba(0,0,0,0.3);
-      --border-color: rgba(255, 255, 255, 0.1);
-      --note-bg: #3c3c3c;
-      --add-btn-bg: rgba(0, 0, 0, 0.3);
-      --progress-bg: #444;
     }
 
     * {
@@ -51,12 +31,11 @@
 
     body {
       font-family: 'Noto Sans KR', sans-serif;
-      background: var(--background-light);
+      background: linear-gradient(135deg, var(--background-light) 0%, #fffbf2 50%, #fefefe 100%);
       background-attachment: fixed;
       min-height: 100vh;
       color: var(--text-dark);
       position: relative;
-      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     /* Background Animation */
@@ -67,21 +46,13 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: var(--background-extra-light);
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 5 L60 25 L85 20 L70 40 L95 50 L75 60 L80 85 L60 70 L50 95 L40 70 L15 85 L30 60 L5 50 L25 40 L10 20 L40 25 Z" fill="rgba(212,13,18,0.05)"/></svg>') repeat;
       pointer-events: none;
-      z-index: -1;
-      opacity: 0.1;
-      transition: opacity 0.5s ease;
-    }
-    
-    .dark-mode::before {
-      opacity: 0.05;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 5 L60 25 L85 20 L70 40 L95 50 L75 60 L80 85 L60 70 L50 95 L40 70 L15 85 L30 60 L5 50 L25 40 L10 20 L40 25 Z" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+      z-index: 1;
     }
 
     .travel-header {
-      background: var(--background-extra-light);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(24px);
       border-bottom: 2px solid var(--secondary-color);
       padding: 2rem 1rem;
@@ -91,32 +62,6 @@
       z-index: 100;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       border-radius: 0 0 24px 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      transition: background-color 0.5s ease, box-shadow 0.5s ease;
-    }
-    
-    .dark-mode .travel-header {
-      background: var(--background-extra-light);
-    }
-    
-    .mode-toggle {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--text-dark);
-      cursor: pointer;
-      transition: transform 0.3s ease, color 0.3s ease;
-      z-index: 101;
-    }
-
-    .mode-toggle:hover {
-      transform: scale(1.1);
     }
 
     .travel-title {
@@ -147,17 +92,13 @@
     }
 
     .day-card {
-      background: var(--background-extra-light);
+      background: rgba(255,255,255,0.95);
       border-radius: 28px;
       margin-bottom: 2rem;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border-color);
-      transition: transform 0.4s ease, background-color 0.5s ease;
+      transition: transform 0.4s ease;
       animation: fadeInFromBottom 1s ease-out;
-    }
-    
-    .dark-mode .day-card {
-      background: var(--background-light);
     }
 
     .day-card:hover {
@@ -228,23 +169,12 @@
       background: var(--background-light);
       border: 1px solid var(--border-color);
       transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-      cursor: grab;
-      position: relative;
-    }
-    
-    .time-item.dragging {
-      opacity: 0.5;
-      transform: scale(1.05);
     }
 
     .time-item:hover {
-      background: var(--background-light);
+      background: #fdf5e6;
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    .dark-mode .time-item:hover {
-      background: #3c3c3c;
     }
 
     .custom-checkbox {
@@ -321,7 +251,7 @@
     }
 
     .stats-container {
-      background: var(--background-extra-light);
+      background: rgba(255,255,255,0.9);
       border-radius: 24px;
       padding: 1.5rem;
       margin-bottom: 2rem;
@@ -331,11 +261,6 @@
       align-items: center;
       border: 1px solid var(--border-color);
       animation: fadeIn 1s ease-out;
-      transition: background-color 0.5s ease;
-    }
-    
-    .dark-mode .stats-container {
-      background: var(--background-light);
     }
 
     .stats-grid {
@@ -353,7 +278,6 @@
       font-size: 2rem;
       font-weight: 700;
       color: var(--primary-color);
-      transition: color 0.5s ease;
     }
 
     .stat-label {
@@ -365,11 +289,10 @@
     .progress-bar {
       width: 100%;
       height: 8px;
-      background: var(--progress-bg);
+      background: #eee;
       border-radius: 4px;
       overflow: hidden;
       margin-top: 1rem;
-      transition: background-color 0.5s ease;
     }
 
     .progress-fill {
@@ -380,13 +303,12 @@
     }
 
     .note-section {
-      background: var(--note-bg);
+      background: #fdf5e6;
       border-left: 5px solid var(--primary-color);
       padding: 1rem 1.5rem;
       margin-top: 1.5rem;
       border-radius: 8px;
       line-height: 1.6;
-      transition: background-color 0.5s ease;
     }
 
     .note-title {
@@ -399,7 +321,7 @@
       width: 100%;
       padding: 1rem;
       border: 2px dashed var(--secondary-color);
-      background: var(--add-btn-bg);
+      background: rgba(255, 255, 255, 0.5);
       color: var(--primary-color);
       border-radius: 20px;
       font-size: 1rem;
@@ -414,10 +336,6 @@
       border-style: solid;
       transform: translateY(-2px);
     }
-    
-    .dark-mode .add-btn:hover, .dark-mode .add-day-btn:hover {
-      background: #3c3c3c;
-    }
 
     .modal {
       display: none;
@@ -430,7 +348,6 @@
       background-color: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(5px);
       padding-top: 60px;
-      transition: backdrop-filter 0.5s ease;
     }
 
     .modal-content {
@@ -442,11 +359,6 @@
       width: 90%;
       max-width: 500px;
       animation: modalFadeIn 0.3s ease-out;
-      transition: background-color 0.5s ease;
-    }
-    
-    .dark-mode .modal-content {
-      background: var(--background-light);
     }
 
     .modal-header {
@@ -454,7 +366,6 @@
       font-weight: 700;
       color: var(--primary-color);
       margin-bottom: 1.5rem;
-      transition: color 0.5s ease;
     }
 
     .form-group {
@@ -476,14 +387,6 @@
       font-size: 1rem;
       font-family: 'Noto Sans KR', sans-serif;
       transition: border-color 0.3s ease;
-      background-color: var(--background-light);
-      color: var(--text-dark);
-    }
-    
-    .dark-mode .form-group input, .dark-mode .form-group textarea {
-      background-color: #3c3c3c;
-      border-color: #555;
-      color: var(--text-dark);
     }
 
     .form-group input:focus, .form-group textarea:focus {
@@ -505,17 +408,12 @@
       font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.5s ease, color 0.5s ease;
+      transition: transform 0.3s ease;
     }
 
     .btn-cancel {
       background: #e9ecef;
       color: var(--text-medium);
-    }
-    
-    .dark-mode .btn-cancel {
-      background: #555;
-      color: #ddd;
     }
 
     .btn-save {
@@ -525,27 +423,6 @@
 
     .btn-cancel:hover, .btn-save:hover {
       transform: translateY(-2px);
-    }
-    
-    /* Toast Message */
-    .toast {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #333;
-      color: white;
-      padding: 1rem 1.5rem;
-      border-radius: 20px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 2000;
-    }
-    
-    .toast.show {
-      opacity: 1;
-      visibility: visible;
     }
 
     /* Animations */
@@ -568,7 +445,7 @@
       from { opacity: 1; transform: translateX(0); }
       to { opacity: 0; transform: translateX(-20px); }
     }
-    
+
     /* Mobile optimization */
     @media (max-width: 768px) {
       .container {
@@ -592,7 +469,6 @@
 </head>
 <body>
   <div class="travel-header">
-    <button id="mode-toggle" class="mode-toggle">🌙</button>
     <div class="travel-title">🍁 2025 오사카 · 교토 여행</div>
     <div class="travel-subtitle">꿈같은 일본 여행을 계획해보세요</div>
   </div>
@@ -633,7 +509,8 @@
     </div>
     <div class="day-content">
 
-      <div class="time-item" data-time="08:00" draggable="true">
+      <!-- 출발 -->
+      <div class="time-item" data-time="08:00">
         <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
         <div class="time-content">
           <div class="time-title">🛫 08:00 인천국제공항 T2 출발</div>
@@ -641,7 +518,8 @@
         </div>
       </div>
 
-      <div class="time-item" data-time="10:00" draggable="true">
+      <!-- 도착 -->
+      <div class="time-item" data-time="10:00">
         <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
         <div class="time-content">
           <div class="time-title">✈️ 10:00 간사이공항 도착</div>
@@ -649,7 +527,8 @@
         </div>
       </div>
 
-      <div class="time-item" data-time="11:30" draggable="true">
+      <!-- 숙소 -->
+      <div class="time-item" data-time="11:30">
         <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
         <div class="time-content">
           <div class="time-title">🏨 11:30 숙소 도착</div>
@@ -657,7 +536,8 @@
         </div>
       </div>
 
-      <div class="time-item" data-time="12:00" draggable="true">
+      <!-- 점심 -->
+      <div class="time-item" data-time="12:00">
         <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
         <div class="time-content">
           <div class="time-title">🍜 12:00~13:00 교토역 점심</div>
@@ -665,7 +545,8 @@
         </div>
       </div>
 
-      <div class="time-item" data-time="13:20" draggable="true">
+      <!-- 후시미 이나리 -->
+      <div class="time-item" data-time="13:20">
         <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
         <div class="time-content">
           <div class="time-title">⛩️ 13:20~14:20 후시미 이나리 신사</div>
@@ -673,7 +554,8 @@
         </div>
       </div>
 
-      <div class="time-item" data-time="14:40" draggable="true">
+      <!-- 기요미즈데라 -->
+      <div class="time-item" data-time="14:40">
         <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
         <div class="time-content">
           <div class="time-title">🏯 14:40~15:40 기요미즈데라</div>
@@ -681,7 +563,8 @@
         </div>
       </div>
 
-      <div class="time-item" data-time="16:00" draggable="true">
+      <!-- 기온 -->
+      <div class="time-item" data-time="16:00">
         <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
         <div class="time-content">
           <div class="time-title">🌸 16:00~17:00 기온 & 야사카 신사</div>
@@ -689,7 +572,8 @@
         </div>
       </div>
 
-      <div class="time-item" data-time="17:20" draggable="true">
+      <!-- 금각사 -->
+      <div class="time-item" data-time="17:20">
         <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
         <div class="time-content">
           <div class="time-title">✨ 17:20~18:40 금각사</div>
@@ -697,7 +581,8 @@
         </div>
       </div>
 
-      <div class="time-item" data-time="19:00" draggable="true">
+      <!-- 저녁 -->
+      <div class="time-item" data-time="19:00">
         <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
         <div class="time-content">
           <div class="time-title">🍵 19:00 저녁식사</div>
@@ -705,7 +590,8 @@
         </div>
       </div>
 
-      <div class="time-item" data-time="20:00" draggable="true">
+      <!-- 복귀 -->
+      <div class="time-item" data-time="20:00">
         <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
         <div class="time-content">
           <div class="time-title">🚆 20:00 숙소 복귀</div>
@@ -735,7 +621,7 @@
           <div class="day-toggle"><i class="fas fa-chevron-down"></i></div>
         </div>
         <div class="day-content">
-          <div class="time-item" data-time="08:30" draggable="true">
+          <div class="time-item" data-time="08:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🏃‍♂️ 08:30 오픈런 시작</div>
@@ -746,7 +632,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="09:00" draggable="true">
+          <div class="time-item" data-time="09:00">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🟩 슈퍼 닌텐도 월드 입장</div>
@@ -757,7 +643,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="09:30" draggable="true">
+          <div class="time-item" data-time="09:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🏎️ 마리오 카트: 쿠파의 도전장</div>
@@ -768,7 +654,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="10:30" draggable="true">
+          <div class="time-item" data-time="10:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🐵 동키콩의 크레이지 드림카</div>
@@ -779,7 +665,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="11:30" draggable="true">
+          <div class="time-item" data-time="11:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🦖 더 플라잉 다이너소어</div>
@@ -790,7 +676,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="12:30" draggable="true">
+          <div class="time-item" data-time="12:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🍴 점심 식사 & 휴식</div>
@@ -801,7 +687,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="13:30" draggable="true">
+          <div class="time-item" data-time="13:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🎮 닌텐도 테마존 자유 탐방</div>
@@ -812,7 +698,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="15:30" draggable="true">
+          <div class="time-item" data-time="15:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🛍️ 기념품 쇼핑 & 휴식</div>
@@ -823,7 +709,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="17:00" draggable="true">
+          <div class="time-item" data-time="17:00">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🏰 하루 마무리 & 퇴장</div>
@@ -847,7 +733,7 @@
           <div class="day-toggle"><i class="fas fa-chevron-down"></i></div>
         </div>
         <div class="day-content">
-          <div class="time-item" data-time="09:50" draggable="true">
+          <div class="time-item" data-time="09:50">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🌃 09:50 돈보리 리버 크루즈 예약</div>
@@ -858,7 +744,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="10:30" draggable="true">
+          <div class="time-item" data-time="10:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🏯 10:30~11:30 오사카성</div>
@@ -869,7 +755,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="12:00" draggable="true">
+          <div class="time-item" data-time="12:00">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🏘️ 12:00~13:00 오사카 주택 박물관</div>
@@ -880,7 +766,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="13:30" draggable="true">
+          <div class="time-item" data-time="13:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🎡 13:30~14:00 헵파이브 관람차</div>
@@ -891,7 +777,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="14:30" draggable="true">
+          <div class="time-item" data-time="14:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🌆 14:30~15:00 공중정원 전망대</div>
@@ -902,7 +788,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="15:40" draggable="true">
+          <div class="time-item" data-time="15:40">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🎡 15:40 덴포잔 대관람차</div>
@@ -913,7 +799,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="16:00" draggable="true">
+          <div class="time-item" data-time="16:00">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🚢 16:00 산타마리아호</div>
@@ -924,7 +810,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="16:30" draggable="true">
+          <div class="time-item" data-time="16:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🎢 16:30~17:00 츠텐카쿠 슬라이더</div>
@@ -935,7 +821,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="20:30" draggable="true">
+          <div class="time-item" data-time="20:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🌃 20:30~20:50 돈보리 리버 크루즈</div>
@@ -963,7 +849,7 @@
           <div class="day-toggle"><i class="fas fa-chevron-down"></i></div>
         </div>
         <div class="day-content">
-          <div class="time-item" data-time="10:00" draggable="true">
+          <div class="time-item" data-time="10:00">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🛍️ 10:00 돈키호테 난바점</div>
@@ -974,7 +860,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="12:00" draggable="true">
+          <div class="time-item" data-time="12:00">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🥢 12:00~13:30 점심 식사</div>
@@ -985,7 +871,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="14:00" draggable="true">
+          <div class="time-item" data-time="14:00">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🛍️ 14:00 신사이바시 쇼핑</div>
@@ -996,7 +882,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="16:30" draggable="true">
+          <div class="time-item" data-time="16:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">☕ 16:30 카페 휴식</div>
@@ -1007,7 +893,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="17:30" draggable="true">
+          <div class="time-item" data-time="17:30">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">🏨 17:30 호텔 체크아웃</div>
@@ -1018,7 +904,7 @@
               <button class="delete-btn" onclick="deleteTimeItem(this)"><i class="fas fa-trash"></i></button>
             </div>
           </div>
-          <div class="time-item" data-time="19:00" draggable="true">
+          <div class="time-item" data-time="19:00">
             <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
             <div class="time-content">
               <div class="time-title">✈️ 19:00 간사이 공항 출발</div>
@@ -1040,8 +926,6 @@
 
     <button class="add-day-btn" onclick="addNewDay()"><i class="fas fa-plus"></i> 새로운 여행일 추가</button>
   </div>
-  
-  <div id="toastMessage" class="toast"></div>
 
   <div id="editModal" class="modal">
     <div class="modal-content">
@@ -1070,7 +954,7 @@
       <div class="modal-header">새 여행일 추가</div>
       <div class="form-group">
         <label>날짜</label>
-        <input type="date" id="newDayDate" placeholder="예: 2025-09-12">
+        <input type="text" id="newDayDate" placeholder="예: 2025.09.12">
       </div>
       <div class="form-group">
         <label>제목</label>
@@ -1093,57 +977,6 @@
     let completedItems = 0;
     let currentEditItem = null;
     let dayCounter = 4;
-    let draggedItem = null;
-
-    // Save and load state
-    function saveState() {
-      const dayCards = document.querySelectorAll('.day-card');
-      const data = [];
-      dayCards.forEach(card => {
-        const dayData = {
-          id: card.dataset.dayId,
-          title: card.querySelector('.day-title').textContent,
-          subtitle: card.querySelector('.day-subtitle').textContent,
-          items: []
-        };
-        const timeItems = card.querySelectorAll('.time-item');
-        timeItems.forEach(item => {
-          dayData.items.push({
-            time: item.dataset.time,
-            title: item.querySelector('.time-title').textContent,
-            description: item.querySelector('.time-description').textContent,
-            checked: item.querySelector('.custom-checkbox').classList.contains('checked')
-          });
-        });
-        data.push(dayData);
-      });
-      localStorage.setItem('travelData', JSON.stringify(data));
-    }
-
-    function loadState() {
-      const savedData = localStorage.getItem('travelData');
-      if (!savedData) return;
-
-      const data = JSON.parse(savedData);
-      const dayContainer = document.getElementById('dayContainer');
-      dayContainer.innerHTML = '';
-      data.forEach(day => {
-        const newDayCard = createDayCard(day.id, day.title, day.subtitle);
-        const dayContent = newDayCard.querySelector('.day-content');
-        day.items.forEach(item => {
-          const newTimeItem = createTimeItem(item.time, item.title, item.description);
-          if (item.checked) {
-            newTimeItem.querySelector('.custom-checkbox').classList.add('checked');
-          }
-          dayContent.insertBefore(newTimeItem, dayContent.querySelector('.add-btn'));
-        });
-        dayContainer.appendChild(newDayCard);
-        dayCounter = Math.max(dayCounter, parseInt(day.id));
-      });
-      document.getElementById('totalDays').textContent = dayCounter;
-      updateStats();
-      attachDragListeners();
-    }
 
     // Toggle Day Card Visibility
     function toggleDay(header) {
@@ -1163,17 +996,6 @@
       checkbox.classList.toggle('checked', !isChecked);
       completedItems += isChecked ? -1 : 1;
       updateStats();
-      saveState();
-    }
-    
-    // Show Toast Message
-    function showToast(message) {
-      const toast = document.getElementById('toastMessage');
-      toast.textContent = message;
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2000);
     }
 
     // Edit Time Item
@@ -1200,8 +1022,6 @@
         setTimeout(() => {
           timeItem.remove();
           updateStats();
-          saveState();
-          showToast("일정이 삭제되었습니다.");
         }, 300);
       }
     }
@@ -1243,7 +1063,6 @@
       }
       closeModal();
       updateStats();
-      saveState();
     }
 
     // Create Time Item
@@ -1251,7 +1070,6 @@
       const div = document.createElement('div');
       div.className = 'time-item';
       div.setAttribute('data-time', time);
-      div.setAttribute('draggable', 'true');
       div.innerHTML = `
         <div class="custom-checkbox" onclick="toggleCheck(this)"><i class="fas fa-check"></i></div>
         <div class="time-content">
@@ -1289,17 +1107,15 @@
       }
 
       dayCounter++;
-      const newDayCard = createDayCard(dayCounter, title, subtitle);
+      const newDayCard = createDayCard(dayCounter, date, title, subtitle);
       document.getElementById('dayContainer').appendChild(newDayCard);
       document.getElementById('totalDays').textContent = dayCounter;
       closeDayModal();
       updateStats();
-      saveState();
-      attachDragListeners();
     }
 
     // Create Day Card
-    function createDayCard(id, title, subtitle) {
+    function createDayCard(id, date, title, subtitle) {
       const div = document.createElement('div');
       div.className = 'day-card';
       div.setAttribute('data-day-id', id);
@@ -1341,90 +1157,11 @@
       if (event.target === document.getElementById('dayModal')) closeDayModal();
     };
 
-    // Dark Mode Toggle
-    const modeToggle = document.getElementById('mode-toggle');
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      const isDarkMode = document.body.classList.contains('dark-mode');
-      modeToggle.textContent = isDarkMode ? '☀️' : '🌙';
-      localStorage.setItem('darkMode', isDarkMode);
-    }
-
-    modeToggle.addEventListener('click', toggleDarkMode);
-
-    // Drag and Drop Logic
-    function attachDragListeners() {
-      const timeItems = document.querySelectorAll('.time-item');
-      timeItems.forEach(item => {
-        item.addEventListener('dragstart', handleDragStart);
-        item.addEventListener('dragover', handleDragOver);
-        item.addEventListener('dragenter', handleDragEnter);
-        item.addEventListener('dragleave', handleDragLeave);
-        item.addEventListener('drop', handleDrop);
-        item.addEventListener('dragend', handleDragEnd);
-      });
-    }
-
-    function handleDragStart(e) {
-      draggedItem = this;
-      setTimeout(() => this.classList.add('dragging'), 0);
-      e.dataTransfer.effectAllowed = 'move';
-      e.dataTransfer.setData('text/html', this.innerHTML);
-    }
-    
-    function handleDragOver(e) {
-      e.preventDefault();
-      e.dataTransfer.dropEffect = 'move';
-      const targetItem = this;
-      if (draggedItem !== targetItem && targetItem.closest('.day-content') === draggedItem.closest('.day-content')) {
-        const rect = targetItem.getBoundingClientRect();
-        const next = (e.clientY - rect.top) / rect.height > 0.5;
-        targetItem.parentNode.insertBefore(draggedItem, next ? targetItem.nextSibling : targetItem);
-      }
-    }
-
-    function handleDragEnter(e) {
-      e.preventDefault();
-    }
-    
-    function handleDragLeave() {
-      // nothing needed for this example
-    }
-    
-    function handleDrop(e) {
-      e.stopPropagation();
-      return false;
-    }
-
-    function handleDragEnd() {
-      this.classList.remove('dragging');
-      saveState();
-    }
-
     // Initialize Page
     document.addEventListener('DOMContentLoaded', () => {
-      // Load Dark Mode Preference
-      const savedDarkMode = localStorage.getItem('darkMode');
-      if (savedDarkMode === 'true' || (savedDarkMode === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.body.classList.add('dark-mode');
-        modeToggle.textContent = '☀️';
-      }
-      
-      // Load saved state or use initial HTML
-      const savedData = localStorage.getItem('travelData');
-      if (savedData) {
-        loadState();
-      } else {
-        updateStats();
-        const firstCardHeader = document.querySelector('.day-card .day-header');
-        if (firstCardHeader) toggleDay(firstCardHeader);
-        attachDragListeners();
-      }
-      
-      document.querySelectorAll('.time-item').forEach(item => {
-        item.setAttribute('draggable', 'true');
-      });
-      attachDragListeners();
+      updateStats();
+      const firstCardHeader = document.querySelector('.day-card .day-header');
+      if (firstCardHeader) toggleDay(firstCardHeader);
     });
   </script>
 </body>
